@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service TemperatureService {
+    // Bi-directional streaming for temperature data
+    rpc StreamTemperature (TemperatureRequest) returns (stream TemperatureData);
+}
+
+message TemperatureRequest {
+    string location = 1;  // Location to monitor
+}
+
+message TemperatureData {
+    string location = 1;
+    float temperature = 2;
+    string timestamp = 3;  // ISO 8601 format
+}
