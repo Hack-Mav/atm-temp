@@ -4,6 +4,7 @@ import temperature_pb2_grpc
 import matplotlib.pyplot as plt
 from collections import defaultdict, deque
 import math
+from datetime import datetime
 
 def run():
     # Connect to the server using SSL/TLS
@@ -59,8 +60,12 @@ def run():
                 temperature = response.temperature
                 timestamp = response.timestamp.split("T")[-1]
 
+                # Format the timestamp to reduce precision (HH:MM format)
+                timestamp_obj = datetime.fromisoformat(f"{response.timestamp}")
+                formatted_time = timestamp_obj.strftime("%H:%M:%S")  # Change format here
+
                 # Update data
-                x_data[location].append(timestamp)
+                x_data[location].append(formatted_time)
                 y_data[location].append(temperature)
 
                 # Update plot
