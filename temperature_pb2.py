@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11temperature.proto\"&\n\x12TemperatureRequest\x12\x10\n\x08location\x18\x01 \x01(\t\"K\n\x0fTemperatureData\x12\x10\n\x08location\x18\x01 \x01(\t\x12\x13\n\x0btemperature\x18\x02 \x01(\x02\x12\x11\n\ttimestamp\x18\x03 \x01(\t2R\n\x12TemperatureService\x12<\n\x11StreamTemperature\x12\x13.TemperatureRequest\x1a\x10.TemperatureData0\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11temperature.proto\"&\n\x12TemperatureRequest\x12\x10\n\x08location\x18\x01 \x01(\t\"K\n\x0fTemperatureData\x12\x10\n\x08location\x18\x01 \x01(\t\x12\x13\n\x0btemperature\x18\x02 \x01(\x02\x12\x11\n\ttimestamp\x18\x03 \x01(\t2T\n\x12TemperatureService\x12>\n\x11StreamTemperature\x12\x13.TemperatureRequest\x1a\x10.TemperatureData(\x01\x30\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -36,5 +36,5 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TEMPERATUREDATA']._serialized_start=61
   _globals['_TEMPERATUREDATA']._serialized_end=136
   _globals['_TEMPERATURESERVICE']._serialized_start=138
-  _globals['_TEMPERATURESERVICE']._serialized_end=220
+  _globals['_TEMPERATURESERVICE']._serialized_end=222
 # @@protoc_insertion_point(module_scope)

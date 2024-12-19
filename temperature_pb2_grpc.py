@@ -34,7 +34,7 @@ class TemperatureServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.StreamTemperature = channel.unary_stream(
+        self.StreamTemperature = channel.stream_stream(
                 '/TemperatureService/StreamTemperature',
                 request_serializer=temperature__pb2.TemperatureRequest.SerializeToString,
                 response_deserializer=temperature__pb2.TemperatureData.FromString,
@@ -44,9 +44,8 @@ class TemperatureServiceStub(object):
 class TemperatureServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def StreamTemperature(self, request, context):
-        """Bi-directional streaming for temperature data
-        """
+    def StreamTemperature(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -54,7 +53,7 @@ class TemperatureServiceServicer(object):
 
 def add_TemperatureServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'StreamTemperature': grpc.unary_stream_rpc_method_handler(
+            'StreamTemperature': grpc.stream_stream_rpc_method_handler(
                     servicer.StreamTemperature,
                     request_deserializer=temperature__pb2.TemperatureRequest.FromString,
                     response_serializer=temperature__pb2.TemperatureData.SerializeToString,
@@ -71,7 +70,7 @@ class TemperatureService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def StreamTemperature(request,
+    def StreamTemperature(request_iterator,
             target,
             options=(),
             channel_credentials=None,
@@ -81,8 +80,8 @@ class TemperatureService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(
-            request,
+        return grpc.experimental.stream_stream(
+            request_iterator,
             target,
             '/TemperatureService/StreamTemperature',
             temperature__pb2.TemperatureRequest.SerializeToString,
